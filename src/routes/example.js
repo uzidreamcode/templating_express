@@ -6,7 +6,7 @@ const controller = require('../controllers/exampleController');
 const { verifyToken } = require('../middlewares/authMiddleware');
 
 // router.post('/', verifyToken, controller.createDocumentCode);
-router.get('/budi',controller.getAllExample);
+router.get('/budi', verifyToken,controller.getAllExample);
 // router.get('/:id', verifyToken, controller.getDocumentCodeById);
 // router.put('/:id', verifyToken, controller.updateDocumentCode);
 // router.delete('/:id', verifyToken, controller.deleteDocumentCode);
