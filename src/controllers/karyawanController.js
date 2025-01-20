@@ -77,7 +77,7 @@ exports.getExampleById = async (req, res) => {
 
 exports.updateExample = async (req, res) => {
     try {
-        const example = await db.example.example.findByPk(req.params.id);
+        const example = await db.tugas1.users.findByPk(req.params.id);
         if (!example) {
             response(req, res, {
                 status: 404,
@@ -85,7 +85,6 @@ exports.updateExample = async (req, res) => {
             });
         } else {
             req.body.updated_at = new Date();
-            req.body.updated_by = req.user.employee_code;
             await example.update(req.body);
             response(req, res, {
                 status: 200,
