@@ -54,21 +54,32 @@ const verifyToken = async (req, res, next) => {
             userSessionCache.set(decoded.id, userData);
         }
 
-        req.user = userData;
-        next();
-        const userRoles = req.user ? req.user.role : [];
-        const userRolesArray = Array.isArray(userRoles) ? userRoles : [userRoles];
-        const hasAllowedRole = userRolesArray.some((role) => allowedRoles.includes(role));
-
-        if (hasAllowedRole) {
+      
+            req.user = userData;      
+            console.log(decoded.id)    
+            next();  
+            // const userRoles = req.user ? req.user.role : [];
             
-        } else {
-            return response(req, res, {
-                status: 403,
-                code: req.method == 'GET' ? '-01' : '-03',
-                message: "Forbidden - Forbidden access",
-            });
-        }
+            // // If userRoles is not an array, convert it into an array
+            // const userRolesArray = Array.isArray(userRoles) ? userRoles : [userRoles];
+            
+            // // Check if the user has any of the allowed roles
+            // const hasAllowedRole = userRolesArray.some((role) => allowedRoles.includes(role));
+            
+            // if (hasAllowedRole) {
+            //     next();
+            //     console.log('User has allowed role');
+            // } else {
+            //     return response(req, res, {
+            //         status: 403,
+            //         code: req.method == 'GET' ? '-01' : '-03',
+            //         message: "Forbidden - Forbidden access",
+            //     });
+            // }
+
+            // console.log(req.user = userData);
+
+     
     });
 };
 
