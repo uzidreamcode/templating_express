@@ -102,7 +102,7 @@ exports.updateExample = async (req, res) => {
 
 exports.deleteExample = async (req, res) => {
     try {
-        const example = await db.example.example.findByPk(req.params.id);
+        const example = await db.tugas1.users.findByPk(req.params.id);
         if (!example) {
             response(req, res, {
                 status: 404,
@@ -110,7 +110,7 @@ exports.deleteExample = async (req, res) => {
             });
         } else {
             // Perform a "soft" delete by updating the is_deleted column
-            await example.update({ is_deleted: 1, updated_at: new Date(), updated_by: req.user.employee_code });
+            await example.destroy();
             response(req, res, {
                 status: 200,
                 data: example,
